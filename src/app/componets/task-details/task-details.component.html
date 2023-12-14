@@ -1,0 +1,31 @@
+<section>
+    <h1>Detalles de la tarea: {{detailsOfTaskany[0].title}}</h1>
+
+    <p><strong>Descripción: </strong>
+        {{detailsOfTaskany[0].description}}
+    </p>
+
+    <p>
+        <strong>Fecha de vencimiento: </strong>
+        {{detailsOfTaskany[0].dueDate}}
+    </p>
+
+    <p><strong>Estado actual: </strong>
+    {{detailsOfTaskany[0].stateHistory[detailsOfTaskany[0].stateHistory.length-1].state}} - {{detailsOfTaskany[0].stateHistory[detailsOfTaskany[0].stateHistory.length-1].date}}</p>
+
+
+    <section class="notes">
+        <ul>
+            <li *ngFor="let nt of detailsOfTaskany[0].notes">
+                {{nt}}
+            </li>
+        </ul>
+    </section>
+
+
+    <div class="btns">
+        <button mat-raised-button color="warn" (click)="deleteTask()">Eliminar</button>
+        <button mat-raised-button>Editar</button>
+    </div>
+
+</section>

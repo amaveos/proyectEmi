@@ -1,0 +1,98 @@
+@import '../assets/brinding';
+
+mat-toolbar{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 90px;
+
+    div.logo{
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
+        width: 40%;
+
+        figure{
+            background-image: url(../assets/imgs/logo-emi-falck_1.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 80px;
+            margin: 0 0 0 16px;
+            width: 130px;
+            min-width: 130px;
+        }
+    }
+
+    div.contactUs{
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        width: 45%;
+
+        a{
+            cursor: pointer;
+            color: $colorSecundario;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+        }
+
+        p{
+            color: $colorSecundario;
+            margin: 0 auto;
+        }
+
+        div.socialMedia{
+            display: flex;
+            justify-content: space-around;
+            span{
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                cursor: pointer;
+                height: 40px;
+                display: block;
+                width: 40px;
+            }
+
+            span.whatssapp{
+                background-image: url(../assets/imgs/ic-whatsApp.svg);
+            }
+            span.twitter{
+                background-image: url(../assets/imgs/ic-twitter.svg);
+            }
+            span.in{
+                background-image: url(../assets/imgs/ic-linkedin.svg);
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    mat-toolbar{
+        div.logo{
+            width: 50%;
+        }
+        div.contactUs{
+            justify-content: flex-end;
+            width: 45%;
+    
+            a{
+                cursor: pointer;
+                color: $colorSecundario;
+                font-weight: bold;
+                text-decoration: none;
+                display: block;
+            }
+    
+            p{
+                display: none;
+            }
+    
+            div.socialMedia{
+               display: none;
+            }
+        }
+    }    
+}

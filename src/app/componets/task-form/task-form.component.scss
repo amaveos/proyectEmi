@@ -1,0 +1,27 @@
+@import '../../../assets/brinding';
+
+section.main {
+    margin: 10px auto;
+    width: 80%;
+
+    h1 {
+        color: $colorSecundario;
+        text-align: center;
+    }
+    p{
+        color: $colorGris;
+    }
+
+    form {
+        div.cntForm{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+            mat-form-field {
+                width: 45%;
+            }
+        }
+      
+    }
+}

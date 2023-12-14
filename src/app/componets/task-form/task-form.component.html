@@ -1,0 +1,74 @@
+<section class="main">
+    <h1>Crear Tarea</h1>
+    <p>Dilingencia por favor todos los datos del formulario</p>
+
+    <form [formGroup]="taskForm">
+        <div class="cntForm">
+            <mat-form-field hintLabel="Max 60 characters">
+                <mat-label>Titulo</mat-label>
+                <input matInput #input maxlength="60" formControlName="title">
+                <mat-hint align="end">{{taskForm.get('title')?.value.length}}/60</mat-hint>
+                <mat-error *ngIf="taskForm.get('title')?.hasError('required')">
+                    El titulo es obligatorio
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Descripcion</mat-label>
+                <textarea matInput placeholder="Escriba aquí..." formControlName="description"></textarea>
+
+                <mat-error *ngIf="taskForm.get('description')?.hasError('required')">
+                    La descripción es obligatoria
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Fecha vencimiento</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dueDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+                <mat-error *ngIf="taskForm.get('dueDate')?.hasError('required')">
+                    La fecha es obligatoria
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Estado</mat-label>
+                <mat-select formControlName="state">
+                    @for (state of dbService.statusList; track state) {
+                    <mat-option [value]="state">{{state.name}}</mat-option>
+                    }
+                </mat-select>
+
+                <mat-error *ngIf="taskForm.get('state')?.hasError('required')">
+                    El estado es obligatorio
+                </mat-error>
+            </mat-form-field>
+
+            
+
+
+        </div>
+        <div>
+            <h4>Notas</h4>
+            <mat-form-field>
+                <mat-label>Nota</mat-label>
+                <input matInput #input [(ngModel)]="nota" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+
+            <a (click)="addNote()">Agregar</a>
+
+            <a (click)="setNotes()">Confirmar Notas</a>
+
+            <h4>Listado de notas agregadas</h4>
+            <ul>
+                <li *ngFor="let n of listaDeNotas">{{n}}</li>
+            </ul>
+        </div>
+
+
+        <button mat-raised-button color="primary" [disabled]="taskForm.invalid">Enviar</button>
+    </form>
+</section>

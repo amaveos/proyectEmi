@@ -1,0 +1,57 @@
+<section class="main">
+    <div class="head">
+        <h1>Lista de tareas</h1>
+
+        <button mat-raised-button color="primary" routerLink='/newTask'>
+            <span class="material-icons">add</span>
+            <span class="text">Añadir Tarea</span>
+        </button>
+    </div>
+
+    <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Titulo </th>
+            <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+        <ng-container matColumnDef="dueDate">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let element"> {{element.dueDate}} </td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Completado </th>
+            <td mat-cell *matCellDef="let element">
+                <p>¿Deseas completar la tarea?</p>
+                <mat-slide-toggle class="example-margin" color="primary" [checked]="element.status">
+                    Sí
+                </mat-slide-toggle>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button mat-icon-button [matMenuTriggerFor]="menu">
+                    <span class="material-icons">more_vert</span>
+                </button>
+
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item [routerLink]="['/taskDetailBy', element.title]">
+                        <mat-icon>open_in_new</mat-icon>
+                        <span>Ver mas...</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>edit</mat-icon>
+                        <span>Editar</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>delete</mat-icon>
+                        <span>Eliminar</span>
+                    </button>
+                </mat-menu>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</section>

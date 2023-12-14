@@ -1,0 +1,34 @@
+@import '../../../assets/brinding';
+
+section.main{
+    margin: 10px auto;
+    width: 80%;
+   
+    div.head{
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        h1{
+            color: $colorSecundario;
+        }
+
+        button{
+            border-radius: 50px;
+        }
+
+    }
+
+    table{
+        td{
+            padding-bottom: 5px;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    section.main{
+        overflow-x: auto;
+        width: 95%;
+    }
+}
